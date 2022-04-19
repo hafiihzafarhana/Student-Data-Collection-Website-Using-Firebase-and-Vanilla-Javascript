@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  >
+  <!-- dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free" -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Atur Akun | ADK</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./../assets/img/gambarku/logo/logo.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <!-- <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" /> -->
+    <link rel="stylesheet" href="./../assets/vendor/fonts/boxicons.css">
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+     <!-- ekspor ke excel -->
+     <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+     <!-- ekspor ke pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+     <!-- CSS datatables js -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <!-- CK Editor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <img src="./../assets/img/gambarku/logo/logo.png" style="width: 20%;" alt="">
+              <span class="app-brand-logo demo">
+              </span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Aplikasi Data <br> Akademik</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <li class="menu-item">
+              <a href="home.html" class="menu-link">
+                <i class='menu-icon tf-icons bx bxs-home' ></i>
+                <div data-i18n="Analytics">Halaman Utama</div>
+              </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Beranda</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="kehadiran.html" class="menu-link">
+                  <i class='menu-icon tf-icons bx bx-door-open'></i>
+                <div data-i18n="Analytics">Kehadiran</div>
+              </a>
+            </li>
+
+            <!-- Layouts -->
+            <li class="menu-item harus_login">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Tampil</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="tampil_data.html" class="menu-link">
+                    <div data-i18n="Fluid">Tampil Data</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="tampil_grafik.html" class="menu-link">
+                    <div data-i18n="Blank">Tampil Grafik</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item harus_login" id="super_admin_button">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='menu-icon tf-icons bx bx-book-reader'></i>
+                <div data-i18n="Layouts">Super Admin</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="tambah_nama.html" class="menu-link">
+                    <div data-i18n="Fluid">Tambah Nama</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="atur_akun.html" class="menu-link">
+                    <div data-i18n="Blank">Atur Akun</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item harus_login active" id="super_admin_button">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class='menu-icon tf-icons bx bx-book-reader'></i> -->
+                <i class='menu-icon tf-icons bx bxl-blogger'></i>
+                <div data-i18n="Layouts">Atur Artikel</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="tambah_artikel.html" class="menu-link">
+                    <div data-i18n="Fluid">Tambah Artikel</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="data_artikel.html" class="menu-link">
+                    <div data-i18n="Blank">Data Artikel</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="kategori_artikel.html" class="menu-link">
+                    <div data-i18n="Fluid">Kategori Artikel</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <p class="pt-3 mx-2 user_link"></p>
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <img src="" id="foto_prof1" style="width: 30px;" class="img-fluid" alt="">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+
+                    <li id="profile_index">
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="" id="foto_prof2" style="width: 30px;" class="img-fluid" alt="">
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block user_link"></span>
+                            <small class="text-muted" id="status_pengguna">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                      <!-- <li>
+                        <div class="dropdown-divider"></div>
+                      </li> -->
+                    </li>
+
+
+                    <li id="my_profile">
+                      <a class="dropdown-item" href="profil_diri.html" id="profile">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">Biodata</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" id="logout_link">
+                        <i class="bx bx-log-out display"></i>
+                        <span class="align-middle">Logout</span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              
+                <div class="row mb-3">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb breadcrumb-style2 mb-0">
+                        <li>
+                          <h4>
+                            <a class="text-dark" href="index.html">Beranda / &nbsp;</a>
+                          </h4>
+                        </li>
+                        <li class="active">
+                          <h4>
+                            <a href="data_artikel.html"> Data Artikel / </a>
+                          </h4>
+                        </li>
+                      </ol>
+                    </nav>
+                  </div>
+
+              <div class="row">
+                <div class="col-lg-12 mb-4 order-0">
+                    <div class="card" id="card_tabel_semua">
+                      <h5 class="card-header">Atur Akun</h5>
+  
+                      <div class="table-responsive text-nowrap container mb-3">
+                        <table class="table table-hover" id="datatables">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Judul</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-border-bottom-0" id="tbody1">
+  
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+                <!--/ Order Statistics -->
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Modal Edit Data -->
+    <div class="modal fade" id="modal_edit_data" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalCenterTitle">Edit Artikel</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+  
+                <div class="row">
+                    <div class="mb-3">
+                      <label for="judul_artikel" class="form-label">Judul Artikel</label>
+                      <input type="text" id="judul_artikel" class="form-control" placeholder="Masukan Nama ..."/>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3">
+                      <label for="judul_slug" class="form-label">Link</label>
+                      <input type="text" id="judul_slug" class="form-control" disabled placeholder="Masukan Nama ..."/>
+                    </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col mb-3">
+                      <label class="form-label">Foto Profil</label><br>
+                      <input type="text" id="namebox" class="form-control" disabled><label for="extlab" id="extlab"></label><br><br>
+                      <img src="./../assets/img/gambarku/upload_img.jpg" id="gambarku" style="height: 300px; width: 300px; border: 2px solid black;" alt="">
+                      <label for="" id="tidak_ada_gambar"></label>
+                    </div>
+                    <textarea disabled hidden name="" id="auth_foto_firebase" id="" cols="30" rows="10"></textarea>
+                  </div>
+
+                  <div class="row g-2 d-inline">
+                    <div class="mb-1">
+                      <button id="pilih_gambar" type="button" class="btn btn-primary">
+                        <i class='bx bxs-select-multiple' style="font-size: 24px;"></i>
+                          Pilih Gambar
+                      </button>
+                    </div>
+                </div>
+                  <div class="row">
+                    <div class="mb-3">
+                      <label for="kategori_artikel" class="form-label">Kategori Artikel</label>
+                      <select class="form-select" id="kategori_artikel" aria-label="Default select example">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3">
+                      <label for="isi_artikel" class="form-label">Isi Artikel</label>
+                      <textarea name="" id="isi_artikel" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3">
+                      <label for="isi_artikel_copy" class="form-label">Copy Isi Artikel Untuk Edit</label>
+                      <button id="btn_salin" class="btn btn-primary mb-3"><i class='bx bxs-copy' style="font-size: 24px;"></i>Salin</button>
+                      <textarea name="" id="isi_artikel_copy" class="form-control" cols="30" rows="10" disabled></textarea>
+                    </div>
+                  </div>
+  
+              <input type="hidden" id="id_untuk_update">
+  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button id="button_update_saya" type="button" class="btn btn-primary">Update Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0 text-center">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  ,
+                  <a href="http://nusantararaya.joomla.com/" target="_blank" class="footer-link fw-bolder">PT Teknologi Nusantara</a>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <!-- Page JS -->
+    <script src="../assets/js/dashboards-analytics.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
+    <!-- script datatables -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- script -->
+    <script>
+        let edit_data;
+        let update_saya;
+        let detail_data;
+        let hapus_data_saya;
+
+    </script>
+    <script>
+      // -------------------------------------------- Enkripsi ------------------------------------------
+      let user_link = document.getElementsByClassName("user_link");
+      const logout_link = document.getElementById('logout_link');
+      const selamat_datang = document.getElementById('selamat_datang');
+      const tambah_data_halaman_legal = document.getElementById('tambah_data_halaman_legal');
+      const profile_index = document.getElementById("profile_index");
+      const profile = document.getElementById("profile");
+      const status_pengguna = document.getElementById("status_pengguna");
+      let harus_login = document.querySelectorAll(".harus_login");
+      let main_konten = document.getElementById("main_konten");
+      var pengguna_saat_ini = null;
+      
+      let foto_prof1 = document.getElementById("foto_prof1")
+      let foto_prof2 = document.getElementById("foto_prof2")
+
+       // -------------------------------------------- function ------------------------------------------
+      function getUsername(){
+        let tetap_login = localStorage.getItem("tetap_login");
+
+        if(tetap_login == "benar"){
+          pengguna_saat_ini = JSON.parse(localStorage.getItem("user"));
+        }
+        else{
+          pengguna_saat_ini = JSON.parse(sessionStorage.getItem("user"));
+        }
+      }
+
+      // console.log(pengguna_saat_ini)
+
+      function logout(){
+        sessionStorage.removeItem("user");
+        localStorage.removeItem("user");
+        localStorage.removeItem("tetap_login");
+        window.location = "index.html";
+      }
+
+      // -------------------------------------------- Windows Load ------------------------------------------
+      window.onload = function(){
+        getUsername();
+        if(pengguna_saat_ini == null){
+
+          for(var i = 0; i < harus_login.length; i++){
+            harus_login[i].remove();
+          }
+
+          profile_index.remove()
+
+          profile.href = "register.html"
+
+          foto_prof1.src = "./../assets/img/gambarku/blank.png"
+
+          logout_link.innerHTML="Login";
+          logout_link.href="login.html";
+
+          profile.innerHTML="Register";
+          window.location.href = "login.html";
+        }
+        else{
+          if(pengguna_saat_ini.role != 1){
+            document.getElementById('super_admin_button').remove();
+            window.location.href="index.html"
+          }
+
+          status_pengguna.innerHTML = pengguna_saat_ini.role == 1 ? "Super Admin" : pengguna_saat_ini.role == 2 ? "Admin" : pengguna_saat_ini.role == 3 ? "User" : ""
+
+          foto_prof1.src = pengguna_saat_ini.ImageURL == "null1" ? ("./../assets/img/gambarku/blank.png") : pengguna_saat_ini.imageURL
+
+          foto_prof2.src = pengguna_saat_ini.ImageURL == "null1" ? ("./../assets/img/gambarku/blank.png") : pengguna_saat_ini.imageURL
+
+          for(let i = 0; i<user_link.length; i++){
+            user_link[i].innerHTML=pengguna_saat_ini.name;
+          }
+
+          logout_link.innerHTML="Logout";
+          logout_link.href="javascript:logout()";
+        }
+      }
+    </script>
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-analytics.js";
+        
+        const firebaseConfig = {
+          apiKey: "....isi....",
+          authDomain: "....isi....",
+          databaseURL: "....isi....",
+          projectId: "....isi....",
+          storageBucket: "....isi....",
+          messagingSenderId: "....isi....",
+          appId: "....isi....",
+          measurementId: "....isi...."
+        };
+  
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        import { getDatabase, set, ref, update, remove, child, get, push, onValue} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-storage.js";
+        let database = getDatabase(app)
+  
+        // ------------------------------------------Reference-----------------------------------------------------
+        let pengguna_saat_ini = null;
+        let tbody1 = document.getElementById("tbody1");
+        let btn_salin = document.getElementById("btn_salin");
+
+       
+
+        // Edit & Update data
+        let button_update_saya = document.getElementById("button_update_saya");
+        let id_untuk_update =document.getElementById("id_untuk_update");
+
+        let judul_artikel = document.getElementById("judul_artikel");
+        let judul_slug = document.getElementById("judul_slug");
+        let isi_artikel = document.getElementById("isi_artikel")
+        let isi_artikel_copy = document.getElementById("isi_artikel_copy")
+
+        let kategori_artikel = document.getElementById("kategori_artikel");
+
+        // edit foto
+        var tidak_ada_gambar = document.getElementById("tidak_ada_gambar");
+        var extlab = document.getElementById("extlab");
+        var namebox = document.getElementById("namebox")
+        var gambarku = document.getElementById("gambarku");
+        var pilih_gambar = document.getElementById("pilih_gambar");
+        var auth_foto_firebase = document.getElementById("auth_foto_firebase")
+
+        var files =[]
+  var reader = new FileReader()
+  var input = document.createElement("input");
+  input.type = "file"
+
+  input.onchange = (e) => {
+    files = e.target.files
+
+    var extension = GetFileExt(files[0])
+    var name_2 = GetFIleName(files[0])
+
+    namebox.value = name_2;
+    extlab.innerHTML = extension;
+
+    reader.readAsDataURL(files[0])
+  }
+
+  reader.onload = function(){
+        gambarku.src = reader.result
+      }
+
+      pilih_gambar.onclick = function(){
+        input.click()
+      }
+
+      var GetFileExt = (file) => {
+        var temp = file.name.split(".");
+        var ext = temp.slice((temp.length-1),(temp.length));
+        console.log(ext)
+        return '.' + ext[0]
+      }
+
+      var GetFIleName = (file) => {
+        var temp = file.name.split(".")
+        var fname = temp.slice(0,-1).join(".")
+        return fname
+      }
+
+
+        btn_salin.onclick = function(){
+            // console.log(isi_artikel_copy.value)
+            navigator.clipboard.writeText(isi_artikel_copy.value)
+        }
+        // --------------------------------------------CRUD----------------------------------------------------------
+        // ---------------------------------------Mendapatkan data user----------------------------------------------
+        function getUsername(){
+          let tetap_login = localStorage.getItem("tetap_login");
+  
+          if(tetap_login == "benar"){
+            pengguna_saat_ini = JSON.parse(localStorage.getItem("user"));
+          }
+          else{
+            pengguna_saat_ini = JSON.parse(sessionStorage.getItem("user"));
+          }
+        }
+  
+        getUsername()
+
+        let setKategoriArtikel = () => {
+        const starCountRef = ref(database, `KategoriArtikel`);
+        onValue(starCountRef, (snapshot1) => {
+          let daftarNama = []
+          let opsi =`<option selected>Pilih...</option>`;
+          
+          snapshot1.forEach((e)=>{
+            daftarNama.push(e.val().nama_kategori)
+            opsi+=`
+              <option value="${e.val().nama_kategori}" class="">${e.val().nama_kategori}</option>
+              `;
+          })
+          kategori_artikel.innerHTML=opsi
+
+        })
+      }
+
+      setKategoriArtikel()
+        // -------------------------------------------------Read Data---------------------------------------------
+        if(pengguna_saat_ini != null){
+          const starCountRef = ref(database, `DaftarArtikel`);
+  
+          onValue(starCountRef, (snapshot) => {
+            let table = ``
+            let nomor = 1;
+            let table2 = ``;
+            snapshot.forEach((data)=>{
+              if(pengguna_saat_ini.role == 1 || pengguna_saat_ini != null){
+                table+= `
+                <tr>
+  
+                    <td>${nomor}</td>
+                    <td>${data.val().judul_artikel}</td>
+                    <td>
+                        <button
+                        type="button"
+                        class="btn btn-primary btn-icon rounded-pill dropdown-toggle hide-arrow"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_edit_data" onClick="edit_data('${data.key}')">Edit</a></li>
+                        <li><a class="dropdown-item" onClick="hapus_data_saya('${data.key}')">Hapus</a></li>
+                      </ul>
+                    </td>
+  
+                  </tr>
+                  `;
+
+                nomor++;
+                }
+            })
+            tbody1.innerHTML = table
+            // tbody2.innerHTML = table2
+            $(document).ready( function () {
+              $('#datatables').DataTable();
+            });
+  
+          });
+        }
+        else{
+          window.location.href = "login.html";
+        }
+
+        var myDataEditor;
+        ClassicEditor
+        .create( document.querySelector( '#isi_artikel' ) )
+        .then( editor => {
+                myDataEditor = editor
+        })
+         .catch( error => {
+                console.error( error );
+         });
+
+        $("#judul_artikel").keyup(function(){
+            var str = $(this).val();
+            str = str.toLowerCase();
+            str = str.replace(/[^a-zA-Z0-9]+/g,'-');
+            $("#judul_slug").val(str);
+        })
+
+        function stripTags (original) {
+  return original.replace(/(<([^>]+)>)/gi, "");
+}
+        
+        // ------------------------------------------------Edit & Update Data ------------------------------------------
+        edit_data = (id) => {
+          const starCountRef = ref(database, `DaftarArtikel/${id}`);
+          onValue(starCountRef, (snapshot) => {
+            judul_artikel.value = snapshot.val().judul_artikel
+            judul_slug.value = snapshot.val().slug_artikel
+            isi_artikel_copy.value = stripTags(snapshot.val().isi_artikel)
+            id_untuk_update.value = id
+            kategori_artikel.value = snapshot.val().kategori
+            gambarku.src = snapshot.val().link_gambar
+            namebox.value = snapshot.val().nama_gambar
+            auth_foto_firebase.value = snapshot.val().link_gambar
+          })
+        }
+        
+        // update_saya = () => {
+        // let data = {
+        //     judul_artikel : judul_artikel.value,
+        //     judul_slug : judul_slug.value,
+        //     isi_artikel : myDataEditor.getData(),
+        //     kategori: kategori_artikel.value
+        // }
+        // update(ref(database,`DaftarArtikel/${id_untuk_update.value}`),data);
+        // button_update_saya.setAttribute('data-dismiss','modal');
+        // }
+
+        async function proses_upload(){
+        var imgToUpload = files[0]
+        var imgName = namebox.value + extlab.innerHTML
+        console.log(imgToUpload)
+        if(imgToUpload != undefined){
+          const metaData = {
+            contentType:imgToUpload.type
+          }
+          const storage = getStorage()
+          const storageRef = sRef(storage,`Images/${imgName}`)
+
+          const uploadTask = uploadBytesResumable(storageRef, imgToUpload, metaData)
+
+          uploadTask.on("state-changed", (snapshot)=>{
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            tidak_ada_gambar.innerHTML = "Upload "+progress+ " %"
+          },
+          (error) => {
+            alert("Gagal Upload Gambar")
+          },
+            ()=>{
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+                // saveData(downloadURL)
+                let tambahData = {
+                    judul_artikel:judul_artikel.value,
+                    isi_artikel:myDataEditor.getData(),
+                    slug_artikel:document.getElementById("judul_slug").value,
+                    kategori:kategori_artikel.value,
+                    link_gambar:downloadURL,
+                    nama_gambar:namebox.value
+              }
+              console.log(tambahData)
+              set(ref(database, `DaftarArtikel/${id_untuk_update.value}`),tambahData );
+              window.location.reload(true);
+              })
+            }
+          )
+        }
+        
+        else{
+          alert("tidak pakai gambar")
+          let tambahData = {
+                judul_artikel:judul_artikel.value,
+                isi_artikel:myDataEditor.getData(),
+                slug_artikel:document.getElementById("judul_slug").value,
+                kategori:kategori_artikel.value,
+                link_gambar:auth_foto_firebase.value,
+                nama_gambar:namebox.value
+          }
+          console.log(tambahData)
+          set(ref(database, `DaftarArtikel/${id_untuk_update.value}`),tambahData );
+          window.location.reload(true);
+        }
+      }
+      
+      button_update_saya.onclick = proses_upload
+
+        // ------------------------------------------------------Hapus Data-------------------------------------------
+        hapus_data_saya = (id) => {
+          remove(ref(database,`DaftarArtikel/${id}`))
+          button_update_saya.setAttribute('data-bs-dismiss','modal')
+        }
+  
+      </script>
+
+
+  </body>
+</html>

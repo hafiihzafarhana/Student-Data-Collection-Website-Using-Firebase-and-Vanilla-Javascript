@@ -1,0 +1,78 @@
+How to access code:
+1) Open the Text Editor. Visual Studio Code (very advanced) or something else.
+2) Get the LOCATION of the WEBUTS3 folder
+3) After getting the folder location. Point the folder into the html folder.
+   WEBUTS3publichtml
+4) After that select one of the .html files to be selected.
+5) Website (Front end and back end running).
+
+Please note, this program runs under a firebase database type NO-SQL (JSON).
+In addition, firebase database usage is run online.
+The firebase website can be visited via the following link:
+https://firebase.google.com/
+
+Program website berjalan dengan firebase versi 9.6.9
+
+To run the website privately, the owner will not provide the owner's own "firebase configuration" details for fear of being misused (Prohibited 
+to spread). The result if spread is that the website system will be changed by people who will abuse. Before getting a way to get "firebase configuration"
+On your own, here's how:
+
+1 Visit the firebase website with the link: https://firebase.google.com/
+
+2 Get started
+
+3 select add project (Do some options in creating a project)
+
+4 After, through the project creation process, the user will be taken to the firebase dashboard
+
+5 Select the "Project Overview" menu and select "+ Add app"
+
+6 Then select for "web"
+
+7 Fill out the form correctly according to the desired choice
+
+8 At the Firebase SDk Add dropdown it is a "firebase configuration"
+
+9 After getting "firebase configuration". Then, go back to the firebase dashboard and select the "Authentication" menu and select "Sign-in method"
+
+10 Select "Add new provider"
+
+11 Select "Email/Password" as authentication user who wants to login or register into the website
+
+12 After that access the "Realtime Database" menu and select Rules
+
+13 Change the rules on the "Realtime Database":
+   The addition of "DataAnak":{".indexPn" = "nilai_akhir"} is used on the index page.html to get the 3 children with the highest score
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "DataAnak":{
+      ".indexOn": "nilai_akhir"
+    }
+  }
+}
+
+14 After that access the "Storage" menu (to save the uploaded image) and select Rules
+
+15 Change the rules on "Storage":
+rules_version = '2';
+firebase.storage service {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth == null;
+    }
+  }
+}
+
+16 Input "firebase configuration" into a script type "module"
+
+
+Notes: 
+
+1 Owners use firebase version 9.6.9. However, it has now evolved to version 9.6.10. This is an option determined by each other's wishes. 
+However, users cannot combine 2 versions in 1 project. As in the index file.html use version 9.6.9 and in the home file.html use version 9.6.10. 
+This causes an error.
+
+2 Database does not need to be created by yourself because it will be created automatically if the user does CRUD on the website.
+
