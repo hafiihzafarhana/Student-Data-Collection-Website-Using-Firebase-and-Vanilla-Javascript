@@ -7,6 +7,8 @@ Tech:
 - Firebase
 - Vanilla Java Script. Link: https://firebase.google.com/
 - JQuery
+- HTML
+- CSS (Bootstrap)
 
 Firebase:
 - Real Time Database (This is for data with type String, int, float, double, etc)
